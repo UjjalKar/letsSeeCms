@@ -21,9 +21,24 @@ collections:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "seoDescription", name: "seoDescription", widget: "text" }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
       - { lable: "seoTags", name: "seoTags", widget: "list" }
+      - { label: "Author", name: "postauthor", widget: "authors" }
+  - label: "Post Author"
+    name: "author"
+    widget: "relation"
+    collection: "authors"
+    searchFields: ["name.first"]
+    valueField: "name.first"
+    displayFields: ["email"]
+    fields:
+      - label: "Name"
+        name: "name"
+        widget: "string"
+        fields:
+          - { label: "First Name", name: "first", widget: "string" }
+          - { label: "Last Name", name: "last", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
