@@ -19,7 +19,7 @@ const Header = ({ links }) => (
             stroke-width="2"
             className="d-block mx-auto"
             role="img"
-            viewBox="0 0 24 24"
+            viewBox="0 0 25 25"
             focusable="false"
           >
             <title>Product</title>
