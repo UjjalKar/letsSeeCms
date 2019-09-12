@@ -31,13 +31,16 @@ collections:
     name: "author"
     widget: "relation"
     collection: "authors"
+    folder: "src/posts/authors"
+    create: true
+    slug: "{{slug}}"
     searchFields: ["name.first"]
     valueField: "name.first"
     displayFields: ["email"]
     fields:
       - label: "Name"
         name: "name"
-        widget: "string"
+
         fields:
           - { label: "First Name", name: "first", widget: "string" }
           - { label: "Last Name", name: "last", widget: "string" }
