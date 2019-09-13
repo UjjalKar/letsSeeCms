@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: master
+  repo: UjjalKar/letsSeeCms
 
 media_folder: static/image
 public_folder: /image
