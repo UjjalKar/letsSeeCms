@@ -1,6 +1,8 @@
 ---
 templateKey: blog-post
-title: 'Windows 10 vs Windows 7 : Everything You Need to Know[2019]'
+title: >-
+  Windows 10 vs Windows 7 : Everything You Need to Know[2019]
+  ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 date: 2019-09-12T18:06:30.013Z
 description: >-
   Microsoft ended mainstream support for Windows 7 on January 13, 2015, but
@@ -8,6 +10,8 @@ description: >-
   Windows 7 users, 
 featuredpost: true
 featuredimage: /image/0172017111254.jpg
+category:
+  - OS
 tags:
   - windows
   - mac
