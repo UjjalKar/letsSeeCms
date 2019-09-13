@@ -18,25 +18,43 @@ collections:
           widget: "hidden",
           default: "blog-post",
         }
-      - { label: "Title", name: "title", widget: "string" }
+      - {
+          label: "Title",
+          name: "title",
+          widget: "string",
+          pattern: [".{60,}", "Must have at least 60 characters"],
+        }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "text" }
+      - {
+          label: "Description",
+          name: "description",
+          widget: "text",
+          pattern: [".{160,}", "Must have at least 160 characters"],
+        }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
+      - { label: "category", name: "category", widget: "list" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
       - { lable: "seoTags", name: "seoTags", widget: "list" }
-      - {label: "Author", name: "author", widget: "relation", collection: "authors", searchFields: ["title", "firstName", "lastName"], valueField: "title"}
+      - {
+          label: "Author",
+          name: "author",
+          widget: "relation",
+          collection: "authors",
+          searchFields: ["title", "firstName", "lastName"],
+          valueField: "title",
+        }
   - name: "authors"
     label: "Authors"
     folder: "src/authors"
     create: true
     slug: "{{slug}}"
-    fields: 
-      - {label: "Layout", name: "layout", widget: "hidden", default: "author"}
-      - {label: "Full Name", name: "title", widget: "string"}
-      - {label: "First Name", name: "firstName", widget: "string"}
-      - {label: "Last Name", name: "lastName", widget: "string"}
-      - {label: "Position", name: "position", widget: "string"}
-      - {label: "Profile Picture", name: "profilePicture", widget: "image"}
-      - {label: "Email", name: "email", widget: "string"}
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "author" }
+      - { label: "Full Name", name: "title", widget: "string" }
+      - { label: "First Name", name: "firstName", widget: "string" }
+      - { label: "Last Name", name: "lastName", widget: "string" }
+      - { label: "Position", name: "position", widget: "string" }
+      - { label: "Profile Picture", name: "profilePicture", widget: "image" }
+      - { label: "Email", name: "email", widget: "string" }
