@@ -22,14 +22,14 @@ collections:
           label: "Title",
           name: "title",
           widget: "string",
-          pattern: [".{60,}", "Must have at least 60 characters"],
+          pattern: [".{,60}", "Must have at least 60 characters"],
         }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - {
           label: "Description",
           name: "description",
           widget: "text",
-          pattern: [".{160,}", "Must have at least 160 characters"],
+          pattern: [".{,160}", "Must have at least 160 characters"],
         }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
