@@ -26,22 +26,17 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
       - { lable: "seoTags", name: "seoTags", widget: "list" }
-      - { label: "Author", name: "postauthor", widget: "authors" }
-  - label: "Post Author"
-    name: "author"
-    widget: "relation"
-    collection: "authors"
-    folder: "src/posts/authors"
+      - {label: "Author", name: "author", widget: "relation", collection: "authors", searchFields: ["title", "firstName", "lastName"], valueField: "title"}
+  - name: "authors"
+    label: "Authors"
+    folder: "src/authors"
     create: true
     slug: "{{slug}}"
-    searchFields: ["name.first"]
-    valueField: "name.first"
-    displayFields: ["email"]
-    fields:
-      - label: "Name"
-        name: "name"
-
-        fields:
-          - { label: "First Name", name: "first", widget: "string" }
-          - { label: "Last Name", name: "last", widget: "string" }
-          - { label: "Email", name: "email", widget: "string" }
+    fields: 
+      - {label: "Layout", name: "layout", widget: "hidden", default: "author"}
+      - {label: "Full Name", name: "title", widget: "string"}
+      - {label: "First Name", name: "firstName", widget: "string"}
+      - {label: "Last Name", name: "lastName", widget: "string"}
+      - {label: "Position", name: "position", widget: "string"}
+      - {label: "Profile Picture", name: "profilePicture", widget: "image"}
+      - {label: "Email", name: "email", widget: "string"}
