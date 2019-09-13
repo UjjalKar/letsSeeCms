@@ -19,19 +19,9 @@ collections:
           widget: "hidden",
           default: "blog-post",
         }
-      - {
-          label: "Title",
-          name: "title",
-          widget: "string",
-          pattern: ["/^[a-zA-Z]{1,60}$/", "Must have at least 60 ,characters"],
-        }
+      - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - {
-          label: "Description",
-          name: "description",
-          widget: "text",
-          pattern: ["/^[a-zA-Z]{1,160}$/", "Must have at least 160 characters"],
-        }
+      - { label: "Description", name: "description", widget: "text" }
       - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
       - { label: "Featured Image", name: "featuredimage", widget: image }
       - { label: "category", name: "category", widget: "list" }
