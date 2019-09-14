@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `infact`,
-    description: `science questions an queaies discussion`,
+    description: `science questions an queaies discussion fact of universe`,
     author: `@infact`,
     menuLinks: [
       {
