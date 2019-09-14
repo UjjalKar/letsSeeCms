@@ -9,62 +9,66 @@ import { kebabCase } from "lodash"
 import "../styles/single-post.scss"
 
 const SinglePost = ({ data }) => {
-  return (
-    <Layout>
-      <Helmet></Helmet>
-      <SEO
-        title={data.markdownRemark.frontmatter.title}
-        description={data.markdownRemark.frontmatter.description}
-      />
-      <div className="row">
-        <div className="col-md-9">
-          <div className="content">
-            <h1
-              className="content-title heading"
-              style={{ fontFamily: `'Playfair Display', serif` }}
-            >
-              {data.markdownRemark.frontmatter.title}
-            </h1>
-            <div className="meta">
-              {data.markdownRemark.frontmatter.category.map(cat => (
-                <Link to={kebabCase(cat)}>
-                  <span className="badge badge-primary mr-2">{cat}</span>
-                </Link>
-              ))}
-              /
-              <span className="ml-2">
-                <Link to={kebabCase(data.markdownRemark.frontmatter.author)}>
-                  {data.markdownRemark.frontmatter.author}
-                </Link>
-              </span>
-              /
-              <span className="badge badge-dark ml-2">
-                {data.markdownRemark.frontmatter.date}
-              </span>
-              /
-              <span className="badge badge-secondary ml-2">
-                {data.markdownRemark.timeToRead} min read
-              </span>
+  if (data.markdownRemark.frontmatter.templateKey === "blog-post") {
+    return (
+      <Layout>
+        <Helmet></Helmet>
+        <SEO
+          title={data.markdownRemark.frontmatter.title}
+          description={data.markdownRemark.frontmatter.description}
+        />
+        <div className="row">
+          <div className="col-md-9">
+            <div className="content">
+              <h1
+                className="content-title heading"
+                style={{ fontFamily: `'Playfair Display', serif` }}
+              >
+                {data.markdownRemark.frontmatter.title}
+              </h1>
+              <div className="meta">
+                {data.markdownRemark.frontmatter.category.map(cat => (
+                  <Link to={kebabCase(cat)}>
+                    <span className="badge badge-primary mr-2">{cat}</span>
+                  </Link>
+                ))}
+                /
+                <span className="ml-2">
+                  <Link to={kebabCase(data.markdownRemark.frontmatter.author)}>
+                    {data.markdownRemark.frontmatter.author}
+                  </Link>
+                </span>
+                /
+                <span className="badge badge-dark ml-2">
+                  {data.markdownRemark.frontmatter.date}
+                </span>
+                /
+                <span className="badge badge-secondary ml-2">
+                  {data.markdownRemark.timeToRead} min read
+                </span>
+              </div>
             </div>
-          </div>
-          <figure className="figure mt-4">
-            <img
-              src={data.markdownRemark.frontmatter.featuredimage}
-              className="figure-img img-fluid rounded"
-              alt={data.markdownRemark.frontmatter.title}
+            <figure className="figure mt-4">
+              <img
+                src={data.markdownRemark.frontmatter.featuredimage}
+                className="figure-img img-fluid rounded"
+                alt={data.markdownRemark.frontmatter.title}
+              />
+              {/* <figcaption class="figure-caption text-right">A caption for the above image.</figcaption> */}
+            </figure>
+            <div
+              className="raw-content"
+              dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
             />
-            {/* <figcaption class="figure-caption text-right">A caption for the above image.</figcaption> */}
-          </figure>
-          <div
-            className="raw-content"
-            dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
-          />
-        </div>
+          </div>
 
-        <Sidebar isHomePage={true} />
-      </div>
-    </Layout>
-  )
+          <Sidebar isHomePage={true} />
+        </div>
+      </Layout>
+    )
+  } else {
+    return <h1>no post</h1>
+  }
 }
 
 export const SinglePostQuery = graphql`
@@ -78,6 +82,7 @@ export const SinglePostQuery = graphql`
         featuredimage
         tags
         description
+        templateKey
       }
       html
       timeToRead
