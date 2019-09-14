@@ -1,4 +1,7 @@
 import React, { useContext } from "react"
+import { Link } from "gatsby"
+import { kebabCase } from "lodash"
+
 import { navigationContext } from "../../context/menuContext"
 
 const Footer = () => {
@@ -6,7 +9,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="container pt-5 site-footer"
+      className="container py-4 site-footer"
       style={{ borderTop: "1px solid #fbefef" }}
     >
       <div className="row">
@@ -19,11 +22,11 @@ const Footer = () => {
         <div className="col-6 col-md">
           <h5>Sitemap</h5>
           <ul className="list-unstyled text-small">
-            {navigation.map(nav => (
-              <li>
-                <a className="text-muted" href="#">
+            {navigation.map((nav, i) => (
+              <li key={i}>
+                <Link className="text-muted" to={kebabCase(nav)}>
                   {nav}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -32,14 +35,14 @@ const Footer = () => {
           <h5>About</h5>
           <ul className="list-unstyled text-small">
             <li>
-              <a className="text-muted" href="#">
+              <Link className="text-muted" to="#">
                 Privacy policy
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="text-muted" href="#">
+              <Link className="text-muted" to="#">
                 Contact Us
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

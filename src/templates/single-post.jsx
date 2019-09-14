@@ -16,6 +16,8 @@ const SinglePost = ({ data }) => {
         <SEO
           title={data.markdownRemark.frontmatter.title}
           description={data.markdownRemark.frontmatter.description}
+          img={data.markdownRemark.frontmatter.featuredimage}
+          slug={data.slug.fields.slug}
         />
         <div className="row">
           <div className="col-md-9">
@@ -27,8 +29,8 @@ const SinglePost = ({ data }) => {
                 {data.markdownRemark.frontmatter.title}
               </h1>
               <div className="meta">
-                {data.markdownRemark.frontmatter.category.map(cat => (
-                  <Link to={kebabCase(cat)}>
+                {data.markdownRemark.frontmatter.category.map((cat, i) => (
+                  <Link key={i} to={kebabCase(cat)}>
                     <span className="badge badge-primary mr-2">{cat}</span>
                   </Link>
                 ))}
@@ -86,6 +88,11 @@ export const SinglePostQuery = graphql`
       }
       html
       timeToRead
+    }
+    slug: markdownRemark {
+      fields {
+        slug
+      }
     }
   }
 `

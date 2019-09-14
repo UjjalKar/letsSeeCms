@@ -12,12 +12,12 @@ const Header = () => {
     <header className="mb-4">
       <nav
         className="navbar navbar-expand-md navbar-dark fixed-top"
-        style={{ backgroundColor: "#3F51B5" }}
+        style={{ backgroundColor: "#563d7c" }}
       >
         <div className="container">
-          <a className="py-2" href="/">
+          <Link className="py-2" to="/">
             <img src="/image/logo.png" alt="astroid logo" />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -31,9 +31,9 @@ const Header = () => {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-              {menus.map(menu => (
-                <li className="nav-item">
+            <ul className="navbar-nav m-auto">
+              {menus.map((menu, i) => (
+                <li key={i} className="nav-item">
                   <Link className="nav-link" to={kebabCase(menu)}>
                     {menu.toUpperCase()}
                   </Link>

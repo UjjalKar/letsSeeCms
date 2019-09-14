@@ -1,8 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `infact`,
-    description: `science questions an queaies discussion fact of universe`,
+    title: `Learn about space, science facts, physics, planets, star - Infact`,
+    description: `learn with us about galaxy stars system, planets, black hole, ask any queries about 
+infinite world - Infact`,
     author: `@infact`,
+
     menuLinks: [
       {
         name: "home",
@@ -17,6 +19,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -66,17 +69,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Infact`,
+        short_name: `Infact`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        background_color: `#563d7c`,
+        theme_color: `#563d7c`,
+        display: `standalone`,
+        icon: `src/images/logo1.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

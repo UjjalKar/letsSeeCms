@@ -16,8 +16,13 @@ export default function Sidebar({ isHomePage, isSinglePage }) {
                 />
               </div>
               <button
-                className="btn btn-primary d-block w-100 mb-2"
+                className="btn d-block w-100 mb-2"
                 type="submit"
+                style={{
+                  backgroundColor: "#563d7c",
+                  color: "#fff",
+                  textTransform: "uppercase",
+                }}
               >
                 I want daily update!
               </button>
