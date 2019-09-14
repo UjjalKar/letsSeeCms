@@ -9,16 +9,9 @@ import { kebabCase } from "lodash"
 import "../styles/single-post.scss"
 
 const SinglePost = ({ data }) => {
-  let tags = []
-
   return (
     <Layout>
-      <Helmet>
-        <meta
-          name="keywords"
-          content={data.markdownRemark.frontmatter.tags.map(tag => `${tag},`)}
-        />
-      </Helmet>
+      <Helmet></Helmet>
       <SEO
         title={data.markdownRemark.frontmatter.title}
         description={data.markdownRemark.frontmatter.description}
