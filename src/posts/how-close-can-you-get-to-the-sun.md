@@ -20,15 +20,15 @@ seoTags:
   - ''
 author: Ujjal Kar
 ---
-The sun’s surface the coldest part still burns at an insane 5,550 degrees Fahrenheit. Very few things besides other suns could survive that kind of heat. 
+The sun’s surface the coldest part still burns at an insane 5,550 degrees Celsius. Very few things besides other suns could survive that kind of heat. 
 
 ## Does a space suit enough to survive?
 
-A standard space suit will protect an astronaut by temperatures of up to 248 degrees Fahrenheit; still great in most instances, but extremely poor for trying to touch the sun.
+A standard space suit will protect an astronaut by temperatures of up to 120 degrees Celsius, still great in most instances, but extremely poor for trying to touch the sun.
 
 ## How close could you make with a space suit?
 
-The sun is about 93 million miles away from Earth, and it’s at about 3 million miles from the surface that temperatures would scorch up to above 248 degrees Fahrenheit. Relatively speaking, this is still pretty close.
+The sun is about 93 million miles away from Earth, and it’s at about 3 million miles from the surface that temperatures would scorch up to above 125 degrees Celsius. Relatively speaking, this is still pretty close.
 
 ## What are the things will kill you beside enormous heat?
 
@@ -36,7 +36,7 @@ There are a couple of other things to consider  namely that cosmic radiation wou
 
 ## Future solution?
 
-Besides that, one solution that may help future astronauts make it closer to the sun would be mirrored shielding. The 2007 film Sunshine depicted a spacecraft fitted with an incredibly huge optical shield designed to bounce the sun’s rays away — which could help ensure the spacecraft stays cool enough.
+Besides that, one solution that may help future astronauts make it closer to the sun would be mirrored shielding. The 2007 film Sunshine depicted a spacecraft fitted with an incredibly huge optical shield designed to bounce the sun’s rays away. which could help ensure the spacecraft stays cool enough.
 
 ## Conclusion
 
