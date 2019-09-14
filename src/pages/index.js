@@ -1,61 +1,11 @@
 import React from "react"
-// import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import Layout from "../components/layout"
 // import SEO from "../components/seo"
-// import PostCard from "../components/PostCard/PostCard"
+import PostCard from "../components/PostCard/PostCard"
+import Sidebar from "../components/sideBar/Sidebar"
 
-const IndexPage = () => {
-  // const { allMarkdownRemark } = useStaticQuery(graphql`
-  //   query HomePagePost {
-  //     allMarkdownRemark(
-  //       limit: 6
-  //       sort: { fields: frontmatter___date, order: DESC }
-  //     ) {
-  //       node {
-  //         excerpt(pruneLength: 30)
-  //         frontmatter {
-  //           categories
-  //           title
-  //           tags
-  //           date(formatString: "MMM Do YY")
-  //           templateKey
-  //         }
-  //         fields {
-  //           slug
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
-  return (
-    <Layout>
-      <div className="col-md-9"></div>
-      <div className="col-md-3">
-        <div className="card">
-          <div className="card-body">
-            <form className="form">
-              <div className="form-group mb-2">
-                <input
-                  type="email"
-                  className="form-control"
-                  placeholder="Email adress"
-                />
-              </div>
-              <button
-                className="btn btn-primary d-block w-100 mb-2"
-                type="submit"
-              >
-                I want daily update!
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </Layout>
-  )
-}
-/*
-const IndexPage = () => {
+function IndexPage() {
   const { allMarkdownRemark } = useStaticQuery(graphql`
     query HomePagePost {
       allMarkdownRemark(
@@ -63,35 +13,41 @@ const IndexPage = () => {
         sort: { fields: frontmatter___date, order: DESC }
       ) {
         nodes {
-          excerpt(pruneLength: 35)
+          excerpt(pruneLength: 30)
           frontmatter {
-            categories
+            category
             title
-            path
             date(formatString: "MMM Do YY")
+            templateKey
+          }
+          fields {
+            slug
           }
         }
       }
     }
   `)
-
   return (
     <Layout>
-      <SEO title="Home" />
-      <div class="row">
-        {allMarkdownRemark.nodes.map(({ id, excerpt, frontmatter }) => (
-          <PostCard
-            key={id}
-            title={frontmatter.title}
-            excerpt={excerpt}
-            categories={frontmatter.categories}
-            path={frontmatter.path}
-            date={frontmatter.date}
-          />
-        ))}
+      <div className="row">
+        <div className="col-md-9">
+          <div className="row">
+            {allMarkdownRemark.nodes.map(node => (
+              <PostCard
+                title={node.frontmatter.title}
+                categories={node.frontmatter.category}
+                excerpt={node.excerpt}
+                date={node.frontmatter.date}
+                slug={node.fields.slug}
+                template={node.frontmatter.templateKey}
+              />
+            ))}
+          </div>
+        </div>
+        <Sidebar isHomePage={true} />
       </div>
     </Layout>
   )
 }
-*/
+
 export default IndexPage

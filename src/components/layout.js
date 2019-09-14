@@ -1,21 +1,14 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Helmet from "react-helmet"
 import Footer from "./footer/footer"
-
+import { navigationContext } from "../context/menuContext"
 import Header from "./header/header"
-import "./layout.css"
+import "../styles/layout.scss"
 
 const Layout = ({ children }) => {
-  const { site } = useStaticQuery(graphql`
+  const { site, allMarkdownRemark } = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
         siteMetadata {
@@ -25,11 +18,14 @@ const Layout = ({ children }) => {
           }
         }
       }
+      allMarkdownRemark {
+        distinct(field: frontmatter___category)
+      }
     }
   `)
 
   return (
-    <>
+    <navigationContext.Provider value={allMarkdownRemark.distinct}>
       <Header links={site.siteMetadata.menuLinks} />
       <Helmet>
         <link
@@ -41,7 +37,7 @@ const Layout = ({ children }) => {
       </Helmet>
       <main className="container py-5">{children}</main>
       <Footer />
-    </>
+    </navigationContext.Provider>
   )
 }
 

@@ -1,40 +1,49 @@
+import React, { useContext } from "react"
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
-import "./header.style.scss"
+import { kebabCase } from "lodash"
 
-const Header = ({ links }) => (
-  <header>
-    <nav className="site-header sticky-top py-1">
-      <div className="container d-flex flex-column flex-md-row justify-content-between">
-        <a className="py-2" href="#">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            className="d-block mx-auto"
-            role="img"
-            viewBox="0 0 25 25"
-            focusable="false"
+import { navigationContext } from "../../context/menuContext"
+
+import "../../styles/header.style.scss"
+
+const Header = () => {
+  const menus = useContext(navigationContext)
+  return (
+    <header className="mb-4">
+      <nav
+        className="navbar navbar-expand-md navbar-dark fixed-top"
+        style={{ backgroundColor: "#3F51B5" }}
+      >
+        <div className="container">
+          <a className="py-2" href="/">
+            <img src="/image/logo.png" alt="astroid logo" />
+          </a>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
           >
-            <title>Product</title>
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"></path>
-          </svg>
-        </a>
-        {links.map(link => (
-          <Link className="py-2 d-none d-md-inline-block" to={link.link}>
-            {link.name.toUpperCase()}
-          </Link>
-        ))}
-      </div>
-    </nav>
-  </header>
-)
+            <span className="navbar-toggler-icon"></span>
+          </button>
 
+          <div className="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+              {menus.map(menu => (
+                <li className="nav-item">
+                  <Link className="nav-link" to={kebabCase(menu)}>
+                    {menu.toUpperCase()}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+  )
+}
 export default Header
