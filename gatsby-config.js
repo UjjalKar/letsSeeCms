@@ -4,19 +4,43 @@ module.exports = {
     description: `learn with us about galaxy stars system, planets, black hole, ask any queries about 
 infinite world - Infact`,
     author: `@infact`,
-
-    menuLinks: [
-      {
-        name: "home",
-        link: "/",
-      },
-      {
-        name: "page2",
-        link: "/page-2",
-      },
-    ],
+    siteUrl: `https://infact.netlify.com`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+        // Exclude specific pages or groups of pages using glob parameters
+        // See: https://github.com/isaacs/minimatch
+        // The example below will exclude the single `path/to/page` and all routes beginning with `category`
+        exclude: ["/category/*", `/404/`, `/404.html`, "/author/*"],
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+
+          allSitePage {
+            edges {
+              node {
+                path
+              }
+            }
+          }
+      }`,
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.edges.map(edge => {
+            return {
+              url: site.siteMetadata.siteUrl + edge.node.path,
+              changefreq: `daily`,
+              priority: 0.7,
+            }
+          }),
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-offline`,

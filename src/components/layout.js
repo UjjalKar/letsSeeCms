@@ -4,20 +4,11 @@ import { useStaticQuery, graphql } from "gatsby"
 import Helmet from "react-helmet"
 import Footer from "./footer/footer"
 import { navigationContext } from "../context/menuContext"
-import Header from "./header/header"
 import "../styles/layout.scss"
 
 const Layout = ({ children }) => {
-  const { site, allMarkdownRemark } = useStaticQuery(graphql`
+  const { allMarkdownRemark } = useStaticQuery(graphql`
     query SiteTitleQuery {
-      site {
-        siteMetadata {
-          menuLinks {
-            link
-            name
-          }
-        }
-      }
       allMarkdownRemark {
         distinct(field: frontmatter___category)
       }
@@ -26,7 +17,6 @@ const Layout = ({ children }) => {
 
   return (
     <navigationContext.Provider value={allMarkdownRemark.distinct}>
-      <Header links={site.siteMetadata.menuLinks} />
       <Helmet>
         <link
           rel="stylesheet"
