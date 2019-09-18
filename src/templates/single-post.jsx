@@ -1,23 +1,29 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import { Helmet } from "react-helmet"
-import SEO from "../components/seo"
+import { kebabCase } from "lodash"
+import { DiscussionEmbed } from "disqus-react"
 
+import SEO from "../components/seo"
 import Layout from "../components/layout"
 import Sidebar from "../components/sideBar/Sidebar"
-import { kebabCase } from "lodash"
 import "../styles/single-post.scss"
 
 const SinglePost = ({ data }) => {
+  const disqusConfig = {
+    shortname: "https-infact-netlify-com-1",
+    config: {
+      identifier: data.markdownRemark.fields.slug,
+    },
+  }
+
   if (data.markdownRemark.frontmatter.templateKey === "blog-post") {
     return (
       <Layout>
-        <Helmet></Helmet>
         <SEO
           title={data.markdownRemark.frontmatter.title}
           description={data.markdownRemark.frontmatter.description}
           img={data.markdownRemark.frontmatter.featuredimage}
-          slug={data.slug.fields.slug}
+          slug={data.markdownRemark.fields.slug}
         />
         <div className="row">
           <div className="col-md-9">
@@ -62,6 +68,9 @@ const SinglePost = ({ data }) => {
               className="raw-content"
               dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
             />
+            <div className="mt-5 p-5">
+              <DiscussionEmbed {...disqusConfig} />
+            </div>
           </div>
 
           <Sidebar isHomePage={true} />
@@ -86,13 +95,11 @@ export const SinglePostQuery = graphql`
         description
         templateKey
       }
-      html
-      timeToRead
-    }
-    slug: markdownRemark {
       fields {
         slug
       }
+      html
+      timeToRead
     }
   }
 `

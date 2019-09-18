@@ -9,6 +9,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     `
       {
         allMarkdownRemark {
+          distinct(field: frontmatter___category)
           nodes {
             fields {
               slug
@@ -25,16 +26,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   //  Careate Category page
-  // const cats = result.data.catGroup.distinct
-  // cats.forEach(cat => {
-  //   createPage({
-  //     path: `/category/${_.kebabCase(cat)}/`,
-  //     component: path.resolve("./src/templates/category.jsx"),
-  //     context: {
-  //       cat: cat,
-  //     },
-  //   })
-  // })
+  const cats = result.data.allMarkdownRemark.distinct
+  cats.forEach(cat => {
+    createPage({
+      path: `/category/${_.kebabCase(cat)}/`,
+      component: path.resolve("./src/templates/category.jsx"),
+      context: {
+        cat: cat,
+      },
+    })
+  })
   const posts = result.data.allMarkdownRemark.nodes
   posts.forEach(post => {
     createPage({

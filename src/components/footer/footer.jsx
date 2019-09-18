@@ -35,7 +35,7 @@ const Footer = () => {
           <h5>About</h5>
           <ul className="list-unstyled text-small">
             <li>
-              <Link className="text-muted" to="#">
+              <Link className="text-muted" to="/privacy-policy">
                 Privacy policy
               </Link>
             </li>

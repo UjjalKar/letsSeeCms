@@ -34,7 +34,10 @@ const Header = () => {
             <ul className="navbar-nav m-auto">
               {menus.map((menu, i) => (
                 <li key={i} className="nav-item">
-                  <Link className="nav-link" to={kebabCase(menu)}>
+                  <Link
+                    className="nav-link"
+                    to={`/category/${kebabCase(menu)}`}
+                  >
                     {menu.toUpperCase()}
                   </Link>
                 </li>
