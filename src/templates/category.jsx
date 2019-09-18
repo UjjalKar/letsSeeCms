@@ -2,12 +2,10 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 
-import SEO from "../components/seo"
 import PostCard from "../components/PostCard/PostCard"
 const Category = ({ data }) => {
   return (
     <Layout>
-      <SEO title={} />
       <div className="row">
         {/* {JSON.stringify(data)} */}
         {data.allMarkdownRemark.edges.map(edge => (
