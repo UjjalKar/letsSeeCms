@@ -7,7 +7,7 @@ import PostCard from "../components/PostCard/PostCard"
 const Category = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Home" />
+      <SEO title={} />
       <div className="row">
         {/* {JSON.stringify(data)} */}
         {data.allMarkdownRemark.edges.map(edge => (
