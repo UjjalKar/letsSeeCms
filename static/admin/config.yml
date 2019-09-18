@@ -3,14 +3,8 @@ backend:
   branch: master
   repo: UjjalKar/letsSeeCms
 
-# media_folder: static/image
-# public_folder: /image
-media_library:
-  name: cloudinary
-  config:
-    cloud_name: "ujjalkar17"
-    api_key: "939541384296227"
-
+media_folder: static/image
+public_folder: /image
 
 collections:
   - name: "blog"
